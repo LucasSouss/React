@@ -18,7 +18,7 @@ body {
   background-color: #1e293b;
   padding: 32px;
   border-radius: 12px;
-  box-shadow: 0px 25px 50px 10px #ab8dff;
+  box-shadow: 0px 25px 50px 10px #16db652a;
 }
 
 .titulo-principal {
@@ -29,6 +29,64 @@ body {
   margin-bottom: 32px; /*adiciona uma margem de 32px abaixo do título*/
   border-bottom: 1px solid #334155;   /* Adiciona uma linha de borda de 1px na parte inferior, usando uma cor cinza escura */
   padding-bottom: 16px;
-  
- 
+}
+
+/*Lista de Tarefas*/
+.tasks-list {
+  list-style: none; /* Remove os marcadores padrão da lista */
+  padding: 24px;
+  margin: 0;
+  background-color: #f1f5f9;
+  box-shadow: 0 20px 25px -5px #2d06755e, 0 8px 10px -6px #a778ff5e;
+}
+
+/* Aplica margem superior de 16px (1rem * 16px) a todos os itens <li>, exceto o primeiro */
+.task-item + .task-item {
+  margin-top: 16px;
+}
+
+.task-item {
+  display: flex;
+  gap: 8px;
+  /* align-items: center; */
+  background-color: #1d1e2c;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px 0 rgb(0, 115, 168);
+}
+
+/* Estilo para o Botão Principal (Título da Tarefa) - Selecionado via seletor :first-child */
+.task-button {
+  flex: 1;  /* Faz com que o botão ocupe o máximo de espaço disponível no flex container */
+  text-align: left;
+  background-color: #0c7489;
+  color: #ffffff;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.line-through {
+    /* Aplica a linha sobre o texto ao concluir a task */
+    text-decoration: line-through;
+    color: #a0aec0; 
+}
+
+.task-item button:last-child:hover {
+  background-color: #00b8f0;
+  border: none;
+  padding-left: 9px;
+  border-radius: 6px;
+}
+
+.chevronIcon {
+  background-color: #0c7489;
+  border-radius: 6px;
+  border: none;
+  width: 40px;
 }

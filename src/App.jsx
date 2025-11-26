@@ -27,6 +27,18 @@ function App() {
     },
   ])
 
+  function onTaskClick(taskId) {
+    const newTasks = tasks.map(task => {
+      if (task.id == taskId) {
+        return {...task, isCompleted: !task.isCompleted}
+      }
+
+      return task
+    })
+    setTasks(newTasks)
+  }
+
+
   return (
     // Aplica a classe para o container principal
     <div className="container-principal"> 
@@ -37,7 +49,7 @@ function App() {
       {/* Aplica a classe para o título */}
       <h1 className="titulo-principal">Gerenciador de Tarefas</h1> 
       <AddTask/>
-      <Tasks tasks={tasks}/>
+      <Tasks tasks={tasks} onTaskClick={onTaskClick}/>
       </div>
 
     </div>

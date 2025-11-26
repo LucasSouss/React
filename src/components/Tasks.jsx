@@ -1,28 +1,26 @@
+import { ChevronRightIcon } from "lucide-react";
 
-
-import { ChevronRightIcon } from "lucide-react"; 
-
-function Tasks (props) {
+function Tasks(props) {
   return (
-    <ul className="tasks-list"> 
+    <ul className="tasks-list">
       {props.tasks.map((task) => (
-        <li key={task.id} className="task-item"> 
-          
-          <button> 
+        <li key={task.id} className="task-item">
+          <button onClick={() => props.onTaskClick(task.id)} 
+          className={`task-button ${task.isCompleted ? 'line-through' : ''}`}>
             {task.title}
+            {/* {task.isCompleted ? "Complete" : "InComplete"} */}
           </button>
-          
-          <button title="Ver Detalhes">
-            <ChevronRightIcon className="w-5 h-5" /> 
+
+          <button className="chevronIcon">
+            <ChevronRightIcon className="w-5 h-5" />
           </button>
         </li>
       ))}
     </ul>
-  )
+  );
 }
 
-export default Tasks
-
+export default Tasks;
 
 // function Tasks(props) {
 
