@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  
 }
 
 .container-principal {
@@ -89,4 +90,19 @@ body {
   border-radius: 6px;
   border: none;
   width: 40px;
+  cursor: pointer;
 }
+
+.deleteIcon {
+  background-color: #0c7489;
+  border-radius: 6px;
+  border: none;
+  width: 40px;
+  color: #ffba52;
+}
+
+.in-deleteIcon {
+  height: 20px;
+  width: 20px;
+}
+

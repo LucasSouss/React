@@ -3,7 +3,7 @@
 import AddTask from "./components/AddTask"
 import Tasks from "./components/Tasks"
 import { useState } from "react"
-import './App.css' // Certifique-se que o CSS está sendo importado!
+import './App.css'
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -26,7 +26,8 @@ function App() {
       isCompleted: false,
     },
   ])
-
+  
+// Marca a tarefa como concluída
   function onTaskClick(taskId) {
     const newTasks = tasks.map(task => {
       if (task.id == taskId) {
@@ -38,7 +39,12 @@ function App() {
     setTasks(newTasks)
   }
 
-
+// Exclui a tarefa
+  function onDeleteTaskId(taskId) {
+    const newTasks = tasks.filter((task) => task.id != taskId)
+    setTasks(newTasks)
+  }
+  
   return (
     // Aplica a classe para o container principal
     <div className="container-principal"> 
@@ -49,7 +55,7 @@ function App() {
       {/* Aplica a classe para o título */}
       <h1 className="titulo-principal">Gerenciador de Tarefas</h1> 
       <AddTask/>
-      <Tasks tasks={tasks} onTaskClick={onTaskClick}/>
+      <Tasks tasks={tasks} onTaskClick={onTaskClick} onDeleteTaskId={onDeleteTaskId}/>
       </div>
 
     </div>
