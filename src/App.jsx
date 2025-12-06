@@ -1,9 +1,9 @@
 // App.jsx
 
-import AddTask from "./components/AddTask"
-import Tasks from "./components/Tasks"
-import { useState } from "react"
-import './App.css'
+import AddTask from "./components/AddTask";
+import Tasks from "./components/Tasks";
+import { useState } from "react";
+import "./App.css";
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -25,41 +25,57 @@ function App() {
       description: "Ser aprovado e dar uma boa condição para Dane",
       isCompleted: false,
     },
-  ])
-  
-// Marca a tarefa como concluída
+  ]);
+
+  //Adiciona uma tarefa a lista
+  function onAddTaskSubmit(title, description) {
+    const adicionar = {
+      id: tasks.length + 1,
+      title,
+      description,
+      isCompleted: false,
+    };
+    setTasks([...tasks, adicionar]);
+  }
+
+  // Marca a tarefa como concluída
   function onTaskClick(taskId) {
-    const newTasks = tasks.map(task => {
+    const newTasks = tasks.map((task) => {
       if (task.id == taskId) {
-        return {...task, isCompleted: !task.isCompleted}
+        return { ...task, isCompleted: !task.isCompleted };
       }
 
-      return task
-    })
-    setTasks(newTasks)
+      return task;
+    });
+    setTasks(newTasks);
   }
 
-// Exclui a tarefa
-  function onDeleteTaskId(taskId) {
-    const newTasks = tasks.filter((task) => task.id != taskId)
-    setTasks(newTasks)
+  // Exclui a tarefa
+  function onDeleteTaskId(OutrotaskId) {
+    const NovaTarefa = tasks.filter((task) => task.id != OutrotaskId);
+    setTasks(NovaTarefa);
   }
-  
+
   return (
     // Aplica a classe para o container principal
-    <div className="container-principal"> 
-      
+    <div className="container-principal">
       {/* Aplica a classe para o container interno */}
-      <div className="container-interno"> 
-
-      {/* Aplica a classe para o título */}
-      <h1 className="titulo-principal">Gerenciador de Tarefas</h1> 
-      <AddTask/>
-      <Tasks tasks={tasks} onTaskClick={onTaskClick} onDeleteTaskId={onDeleteTaskId}/>
+      <div className="container-interno">
+        {/* Aplica a classe para o título */}
+        <h1 className="titulo-principal">Gerenciador de Tarefas</h1>
+        <div className="secao-adicionar-tarefa">
+          <AddTask onAddTaskSubmit={onAddTaskSubmit}/>
+        </div>
+        <div className="secao-lista-tarefas">
+          <Tasks
+            tasks={tasks}
+            onTaskClick={onTaskClick}
+            onDeleteTaskId={onDeleteTaskId}
+          />
+        </div>
       </div>
-
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

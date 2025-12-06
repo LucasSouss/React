@@ -32,13 +32,81 @@ body {
   padding-bottom: 16px;
 }
 
+.container-Input-Add {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 32px;
+  border-radius: 8px;
+  
+}
+
+.Input-Task, 
+.Input-Description {
+  flex: 1;
+  font-size: 10px;
+  padding: 12px;
+  border-radius: 6px;
+  background-color: #8b660027;
+  border: 1px solid #475569;
+  color: #f8fafc;
+}
+
+@media (min-width: 600px) {
+  .Input-Task {
+    flex: 1;
+    min-width: 150px;
+  }
+
+  .Input-Description {
+    flex-basis: 100%;
+  }
+}
+
+.Input-Task::placeholder,
+.Input-Description::placeholder {
+  color: #ffffff;
+  font-size: 12px;
+}
+
+/* botao adicionar */
+.bttAdd {
+  padding: 12px 20px;
+  background-color: #81fc6375;
+  font-weight: bold;
+  border-radius: 6px;
+  border: none;
+  transition: background-color 0.15 ease-in-out;
+  cursor: pointer;
+  
+}
+
+.bttAdd:hover{
+  background-color: #3484929d;
+}
+
+/* Estilos para a seção que contém o formulário de Adicionar Tarefa */
+.secao-adicionar-tarefa {
+    
+    background-color: #1d1e2c; 
+    
+    padding: 24px; 
+   
+    border-radius: 8px; 
+    
+    box-shadow: 0 4px 12px #0000001a; 
+    
+    margin-bottom: 24px; /* espaçamento entre as os inputs e as tasks*/
+}
 /*Lista de Tarefas*/
 .tasks-list {
   list-style: none; /* Remove os marcadores padrão da lista */
   padding: 24px;
   margin: 0;
-  background-color: #f1f5f9;
-  box-shadow: 0 20px 25px -5px #2d06755e, 0 8px 10px -6px #a778ff5e;
+  background-color: #1d1e2c;
+  box-shadow: 0 20px 25px -5px #0302035e, 0 8px 10px -6px #a778ff5e;
 }
 
 /* Aplica margem superior de 16px (1rem * 16px) a todos os itens <li>, exceto o primeiro */
@@ -99,6 +167,7 @@ body {
   border: none;
   width: 40px;
   color: #ffba52;
+  cursor: pointer;
 }
 
 .in-deleteIcon {
