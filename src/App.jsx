@@ -4,6 +4,7 @@ import AddTask from "./components/AddTask";
 import Tasks from "./components/Tasks";
 import { useState } from "react";
 import "./App.css";
+import {v4 as uuidv4} from 'uuid'
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -30,7 +31,7 @@ function App() {
   //Adiciona uma tarefa a lista
   function onAddTaskSubmit(title, description) {
     const adicionar = {
-      id: tasks.length + 1,
+      id: uuidv4,
       title,
       description,
       isCompleted: false,
