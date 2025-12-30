@@ -8,26 +8,28 @@ import {v4 as uuidv4} from 'uuid'
 
 
 function App() {
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      title: "Estudar Programação",
-      description: "Estudar programação para ser bem sucedido!",
-      isCompleted: false,
-    },
-    {
-      id: 2,
-      title: "Estudar inglês",
-      description: "Aprender ingles para morar fora",
-      isCompleted: false,
-    },
-    {
-      id: 3,
-      title: "Estudar para concurso",
-      description: "Ser aprovado e dar uma boa condição para Dane",
-      isCompleted: false,
-    },
-  ])
+  const [tasks, setTasks] = useState(
+    JSON.parse(localStorage.getItem("Save")) || []
+  )
+
+
+  //Chama API
+  useEffect(() => {
+    const fetchTasks = async () => {
+      const response = await fetch('https://jsonplaceholder.typicode.com/todos/?_limit=10', {
+      method: 'GET',
+    }
+  )
+    const data = await response.json()
+    setTasks(data)
+    }
+    fetchTasks()
+},[])
+
+
+  useEffect(() => {
+    localStorage.setItem("Save", JSON.stringify(tasks))
+  }, [tasks])
 
   //Adiciona uma tarefa a lista
   function onAddTaskSubmit(title, description) {
